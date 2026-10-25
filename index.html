@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mischa Orlow</title>
+  <meta name="description" content="Mischa Orlow — side projects and indie games." />
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --text: #222;
+      --muted: #6a6a6a;
+      --accent: #2b8a3e;
+      --link: #1a6e2e;
+      --rule: #e2e2df;
+      --band: #ececea;
+      --bar: #2b8a3e;
+    }
+    :root[data-theme="dark"] {
+      --bg: #0f1216;
+      --text: #d7dbe0;
+      --muted: #8b94a0;
+      --accent: #5bd97a;
+      --link: #6ee087;
+      --rule: #262b33;
+      --band: #171b22;
+      --bar: #5bd97a;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --bg: #0f1216;
+        --text: #d7dbe0;
+        --muted: #8b94a0;
+        --accent: #5bd97a;
+        --link: #6ee087;
+        --rule: #262b33;
+        --band: #171b22;
+        --bar: #5bd97a;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 15px/1.7 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace;
+      -webkit-font-smoothing: antialiased;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px 72px; }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* top bar with theme toggle */
+    .topbar { display: flex; justify-content: flex-end; margin-bottom: 28px; }
+    .theme-toggle {
+      font: inherit;
+      font-size: 0.82rem;
+      color: var(--muted);
+      background: transparent;
+      border: 1px solid var(--rule);
+      border-radius: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: border-color 0.15s ease, color 0.15s ease;
+    }
+    .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+    h1 {
+      font-size: 1.55rem;
+      margin: 0 0 4px;
+      letter-spacing: -0.5px;
+    }
+    h1::before { content: "~/ "; color: var(--accent); }
+
+    /* terminal intro */
+    .term {
+      margin: 18px 0 8px;
+      padding: 16px 18px;
+      background: var(--band);
+      border: 1px solid var(--rule);
+      border-radius: 6px;
+      min-height: 3em;
+    }
+    .term .prompt { color: var(--accent); }
+    #typed { }
+    .cursor {
+      display: inline-block;
+      width: 0.6em;
+      height: 1.05em;
+      background: var(--accent);
+      vertical-align: text-bottom;
+      margin-left: 1px;
+      animation: blink 1s step-end infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .social { display: flex; gap: 18px; align-items: center; margin-top: 16px; }
+    .social a { display: inline-flex; align-items: center; gap: 7px; color: var(--muted); font-size: 0.9rem; }
+    .social a:hover { color: var(--accent); text-decoration: none; }
+    .social svg { width: 18px; height: 18px; fill: currentColor; }
+
+    h2 {
+      font-size: 1.05rem;
+      margin: 44px 0 18px;
+      padding: 8px 14px;
+      background: var(--band);
+      border-left: 3px solid var(--bar);
+    }
+    h2::before { content: "## "; color: var(--accent); }
+
+    .entry { margin: 0 0 20px; }
+    .entry .name a { font-weight: 700; }
+    .entry .name::before { content: "> "; color: var(--accent); }
+    .entry .desc { margin: 2px 0 0; padding-left: 1.1em; }
+    .entry .meta { color: var(--muted); font-size: 0.88rem; }
+
+    footer {
+      margin-top: 52px;
+      padding-top: 16px;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+
+    <div class="topbar">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle theme">◐ auto</button>
+    </div>
+
+    <h1>mischa orlow</h1>
+
+    <div class="term" aria-label="intro">
+      <div><span id="typed" data-text="Currently studying in my master at ETH and working on my side project."></span><span class="cursor" id="cursor"></span></div>
+    </div>
+
+    <div class="social">
+      <a href="https://github.com/Mischa-O" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        github
+      </a>
+      <a href="https://www.linkedin.com/in/mischa-orlow-438103222/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg viewBox="0 0 16 16" aria-hidden="true"><path d="M13.63 13.63h-2.37V9.9c0-.89-.02-2.03-1.24-2.03-1.24 0-1.43.97-1.43 1.97v3.79H6.22V5.98h2.28v1.04h.03c.32-.6 1.09-1.24 2.24-1.24 2.4 0 2.85 1.58 2.85 3.63v4.22zM3.56 4.94a1.37 1.37 0 110-2.75 1.37 1.37 0 010 2.75zM4.75 13.63H2.37V5.98h2.38v7.65zM14.82 0H1.18C.53 0 0 .52 0 1.16v13.68C0 15.48.53 16 1.18 16h13.64c.65 0 1.18-.52 1.18-1.16V1.16C16 .52 15.47 0 14.82 0z"/></svg>
+        linkedin
+      </a>
+    </div>
+
+    <h2>side projects</h2>
+    <div class="entry">
+      <div class="name"><a href="https://www.newsbrief.me" target="_blank" rel="noopener">Newsbrief</a></div>
+      <p class="desc">A side project. <span class="meta">Contact me for beta access.</span></p>
+    </div>
+
+    <h2>games</h2>
+    <div class="entry">
+      <div class="name"><a href="https://play.unity.com/en/games/067fcac0-e455-4585-9a23-f406d21e7859/portal-puzzle" target="_blank" rel="noopener">Portal Puzzle</a></div>
+      <p class="desc">Final project in high school at Kantonsschule Enge Zürich.</p>
+    </div>
+    <div class="entry">
+      <div class="name"><a href="https://play.unity.com/en/games/209c95a6-d4cd-4cca-b15d-ee40abf97598/i-hate-insects" target="_blank" rel="noopener">I hate insects</a></div>
+      <p class="desc">A solo project at the Australian National University.</p>
+    </div>
+    <div class="entry">
+      <div class="name"><a href="https://play.unity.com/en/games/9132b796-4150-4cfb-9553-9422e94cc599/anu2023-penguin-odyssey" target="_blank" rel="noopener">Penguin Odyssey</a></div>
+      <p class="desc">Built with three team members at the Australian National University.</p>
+    </div>
+
+    <footer>© 2026 mischa orlow</footer>
+
+  </div>
+
+  <script>
+    // ---- Theme: auto (system) / light / dark, with manual override ----
+    (function () {
+      var KEY = "theme";
+      var root = document.documentElement;
+      var btn = document.getElementById("themeToggle");
+      var modes = ["auto", "light", "dark"];
+      var labels = { auto: "◐ auto", light: "☀ light", dark: "☾ dark" };
+
+      function read() {
+        try { return localStorage.getItem(KEY); } catch (e) { return null; }
+      }
+      function write(v) {
+        try { localStorage.setItem(KEY, v); } catch (e) {}
+      }
+      function apply(mode) {
+        if (mode === "auto") root.removeAttribute("data-theme");
+        else root.setAttribute("data-theme", mode);
+        btn.textContent = labels[mode];
+        btn.setAttribute("aria-label", "Theme: " + mode + " (click to change)");
+      }
+
+      var mode = read();
+      if (modes.indexOf(mode) === -1) mode = "auto";
+      apply(mode);
+
+      btn.addEventListener("click", function () {
+        mode = modes[(modes.indexOf(mode) + 1) % modes.length];
+        write(mode);
+        apply(mode);
+      });
+    })();
+
+    // ---- Typewriter intro ----
+    (function () {
+      var el = document.getElementById("typed");
+      var cursor = document.getElementById("cursor");
+      var text = el.getAttribute("data-text") || "";
+      var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      if (reduce) { el.textContent = text; return; }
+
+      var i = 0;
+      function tick() {
+        if (i <= text.length) {
+          el.textContent = text.slice(0, i);
+          i++;
+          // vary speed slightly for a human feel
+          setTimeout(tick, 11 + Math.random() * 22);
+        }
+      }
+      // small delay before typing starts
+      setTimeout(tick, 350);
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 · Mischa Orlow</title>
+  <style>
+    :root { --bg: #f7f7f5; --text: #222; --muted: #6a6a6a; --accent: #2b8a3e; --link: #1a6e2e; }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #0f1216; --text: #d7dbe0; --muted: #8b94a0; --accent: #5bd97a; --link: #6ee087; }
+    }
+    body { margin: 0; background: var(--bg); color: var(--text);
+      font: 15px/1.7 ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Liberation Mono", monospace; }
+    .wrap { max-width: 720px; margin: 0 auto; padding: 40px 20px; }
+    h1 { font-size: 1.55rem; margin: 0 0 12px; }
+    h1::before { content: "~/ "; color: var(--accent); }
+    .prompt { color: var(--accent); }
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .muted { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>404</h1>
+    <p><span class="prompt">$</span> ls <span id="path"></span><br>
+    <span class="muted">ls: no such file or directory</span></p>
+    <p><a href="/">← back to orlow.ch</a></p>
+  </div>
+  <script>document.getElementById("path").textContent = location.pathname;</script>
+</body>
+</html>
